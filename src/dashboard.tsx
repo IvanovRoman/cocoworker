@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { ModalRoot, ModalPage, ModalPageHeader, Group, Panel, PanelHeader, Avatar, Button, Separator, SplitLayout, Div, Flex, Input, IconButton, FormItem, FormLayoutGroup, Checkbox } from '@vkontakte/vkui';
+import { ModalRoot, ModalPage, ModalPageHeader, Group, Panel, PanelHeader, Avatar, Button, Separator, SplitLayout, Div, Flex, Input, IconButton, FormItem, FormLayoutGroup, Checkbox, SplitCol } from '@vkontakte/vkui';
 import { Icon16Clear } from '@vkontakte/icons';
 import { UserList } from './user';
 
@@ -77,25 +77,29 @@ export const Main = () => {
   );
 
   return (
-    <SplitLayout center header={<PanelHeader delimiter='none' />}>
-      <Panel id={'panel 1'}>
-        <PanelHeader>
-          <Flex justify='center'>
-            <Div>
-              Турнир
-            </Div>
-          </Flex>
-        </PanelHeader>
-        <Group>
-          <Flex margin='auto' direction='column' align='center' justify='center' gap={5}>
-            <Avatar size={128} src={pict} />
-            <Button onClick={() => showModal('modal')}>{LABEL}</Button>
-          </Flex>
-          <Separator />
-          <UserList />
-        </Group>
-      </Panel>
+    <>
+      <SplitLayout center header={<PanelHeader delimiter='none' />}>
+        <SplitCol>
+          <Panel id={'panel 1'}>
+          <PanelHeader>
+            <Flex justify='center'>
+              <Div>
+                Турнир
+              </Div>
+            </Flex>
+          </PanelHeader>
+          <Group>
+            <Flex margin='auto' direction='column' align='center' justify='center' gap={5}>
+              <Avatar size={128} src={pict} />
+              <Button onClick={() => showModal('modal')}>{LABEL}</Button>
+            </Flex>
+            <Separator />
+            <UserList />
+          </Group>
+        </Panel>
+        </SplitCol>
+      </SplitLayout>
       {modalRoot}
-    </SplitLayout>
+    </>
   );
 }
